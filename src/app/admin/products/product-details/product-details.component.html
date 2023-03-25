@@ -1,0 +1,25 @@
+<h1>Détails de produit</h1>
+<div class="card">
+    <div class="card-header">
+        Détails de produit
+    </div>
+
+    <div class="card-body">
+        <dl class="row" *ngIf="product">
+            <dt class="col-sm-3">Désignation:</dt>
+            <dd class="col-sm-9">{{product.name}}</dd>
+
+            <dt class="col-sm-3">Prix:</dt>
+            <dd class="col-sm-9">{{product.price | currency}}</dd>
+
+            <dt class="col-sm-3">Déscription:</dt>
+            <dd class="col-sm-9">{{product.description}}</dd>
+
+        </dl>
+
+        <button [routerLink]="['/admin/products', product.id, 'update']" class="btn btn-dark me-2">Modifier</button>
+        <!-- <button [routerLink]="['/admin/products', product.id, 'delete']" class="btn btn-dark me-2">Supprimer</button> -->
+        <button [routerLink]="['/admin/products']" class="btn btn-dark">Retour</button>
+
+    </div>
+</div>

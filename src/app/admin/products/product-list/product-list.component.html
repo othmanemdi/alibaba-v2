@@ -1,0 +1,53 @@
+<h1>Liste des produits</h1>
+
+<div class="card">
+    <div class="card-header">
+        Liste des produits
+    </div>
+
+    <div class="card-body">
+
+        <div class="input-group mb-3">
+            <a class="btn btn-dark fw-bold" routerLink="/admin/products-create">
+                Ajouter un produit
+            </a>
+            <input class="form-control" type="text" id="search" [(ngModel)]="searchTerm" name="search"
+                (keyup)="search()" placeholder="Rechercher:">
+        </div>
+
+        <table class="table table-sm table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products">
+                    <td>{{product.id}}</td>
+                    <td>{{product.name}}</td>
+                    <td>{{product.price}}</td>
+                    <td>{{product.category}}</td>
+                    <td>
+                        <!-- <a [routerLink]="['/product', product.id]">{{product.name}}</a> -->
+                        <!-- <button (click)="onDelete(product.id)">Delete</button> -->
+
+                        <a class="btn btn-secondary btn-sm me-1"
+                            routerLink="/admin/products/{{product.id}}">Afficher</a>
+                        <a class="btn btn-dark btn-sm me-1"
+                            routerLink="/admin/products/{{product.id}}/update">Modifier</a>
+                        <button class="btn btn-danger btn-sm me-1"
+                            (click)="deleteProduct(product.id)">Supprimer</button>
+                        <!-- 
+                        <button [routerLink]="['/products', product.id, 'delete']"
+                            class="btn btn-dark btn-sm">Supprimer</button> -->
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
